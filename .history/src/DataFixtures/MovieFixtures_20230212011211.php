@@ -46,8 +46,6 @@ class MovieFixtures extends Fixture
         $movie4->setReleaseYear(1994);
         $movie4->setDescription("PHP has greatly evolved over the years as far as reusability is concerned. Since PHP5, the object implementation is much better, and when traits will be supported in the next version of the language, we will have a solid general purpose language at our disposal. I'm really happy with all these changes as it helps me write better programs, but these enhancements are irrelevant when what you want to do is to mainly write templates.");
         $movie4->setImagePath('https://www.imdb.com/title/tt0111161/mediaviewer/rm1306652160');
-        $movie4->addActor($this->getReference('actor3'));
-        $movie4->addActor($this->getReference('actor4'));
         $manager->persist($movie4);
 
 
