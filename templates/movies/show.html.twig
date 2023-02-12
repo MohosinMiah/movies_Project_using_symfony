@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Movie List{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="jumbotron text-center">
+			<h1>Single Move Details</h1>
+			<p>World Best Movie Review Website</p> 
+			<strong class="text text-primary">{{movie.title}}</strong>
+			<br>
+			<a href="{{ path('movie_list') }}" class="btn btn-primary">Movie List</a>
+		</div>
+		<div class="container">
+			<ul class="list-group">
+				<li class="list-group-item"><strong>Movie Title:</strong> {{movie.title}}</li>
+				<li class="list-group-item"><strong>Movie Relase Year:</strong> {{movie.releaseYear}}</li>
+			</ul>
+			<div class="card">
+				<div class="card-body">
+					<p class="card-text">{{movie.description}}</p>
+				</div>
+			</div>
+			<img src="{{ movie.imagePath }}" class="img-fluid" alt="Responsive image">
+			<hr>
+			<br />
+			<h1> Actor List</h1>
+			<ul class="list-group">
+				{% for actor in movie.actors %}
+					<li class="list-group-item"><strong>Actor Name:</strong> {{actor.name}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+	</div>
+{% endblock %}
