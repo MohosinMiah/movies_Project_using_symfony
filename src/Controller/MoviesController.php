@@ -56,8 +56,19 @@ class MoviesController extends AbstractController
 		// create new movie
 		$entityManager = $doctrine->getManager();
 		$movie = new Movie();
+
 		$movie->setTitle($request->get('title'));
 		$movie->setReleaseYear($request->get('release_year'));
+		// Upload image_path image
+		$image_path = $request->files->get('image_path');
+		// above line not working what is the solution
+		
+		// dd($image_path);
+		$image_path_name = md5( uniqid() ) . '.' . $image_path->guessExtension();
+		$image_path->move(
+			$this->getParameter('images_directory'),
+			$image_path_name
+		);
 		$movie->setDescription($request->get('description'));
 		$entityManager->persist( $movie );
 		$entityManager->flush();
