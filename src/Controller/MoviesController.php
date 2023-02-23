@@ -99,7 +99,8 @@ class MoviesController extends AbstractController
 
 		// upload image after check image is change or not
 		$image_path = $request->files->get('image_path');
-		if( $image_path ) {
+		if( $image_path )
+		{
 			$image_path_name = md5( uniqid() ) . '.' . $image_path->guessExtension();
 			$image_path->move(
 				$this->getParameter('images_directory'),
