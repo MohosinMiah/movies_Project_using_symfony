@@ -21,7 +21,7 @@
 					<p class="card-text">{{movie.description}}</p>
 				</div>
 			</div>
-			<img src="{{ movie.imagePath }}" class="img-fluid" alt="Responsive image">
+			<img src="{{ asset('uploads/images_directory/' ~ movie.imagePath ) }}" class="img-fluid" alt="Responsive image">
 			<br />
 			<a href="{{ path('movie_edit', {id: movie.id }) }}"> 
 					<h1> Edit Movie</h1>

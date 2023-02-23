@@ -31,7 +31,7 @@
 					<td>{{ movie.description }}</td>
 					<td>{{ movie.releaseYear }}</td>
 					<td>
-					<img src="{{ movie.imagePath }}" width="100" height="100" />
+					<img src="{{ asset('uploads/images_directory/' ~ movie.imagePath ) }}" width="100" height="100" />
 					</td>
 				</tr>
 			{% endfor %}

@@ -69,6 +69,7 @@ class MoviesController extends AbstractController
 			$this->getParameter('images_directory'),
 			$image_path_name
 		);
+		$movie->setImagePath( $image_path_name );
 		$movie->setDescription($request->get('description'));
 		$entityManager->persist( $movie );
 		$entityManager->flush();
@@ -94,6 +95,19 @@ class MoviesController extends AbstractController
 		$entityManager = $doctrine->getManager();
         $movie = $entityManager->getRepository(Movie::class)->find($id);
 		$movie->setTitle($request->get('title'));
+		$movie->setReleaseYear($request->get('release_year'));
+
+		// upload image after check image is change or not
+		$image_path = $request->files->get('image_path');
+		if( $image_path ) {
+			$image_path_name = md5( uniqid() ) . '.' . $image_path->guessExtension();
+			$image_path->move(
+				$this->getParameter('images_directory'),
+				$image_path_name
+			);
+			$movie->setImagePath( $image_path_name );
+		}
+
 		$movie->setDescription($request->get('description'));
 		$entityManager->persist($movie);
 		$entityManager->flush();

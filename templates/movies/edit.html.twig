@@ -10,27 +10,37 @@
 			<a href="{{ path('movie_list') }}" class="btn btn-primary">Movie List</a>
 		</div>
 		<div class="container">
-			<form action="{{ path('movie_update', {'id': movie.id}) }}" method="post">
+			<form action="{{ path('movie_update', {'id': movie.id}) }}" method="post"  enctype="multipart/form-data">
 				<div class="form-group">
 				  <label for="title">Movie Title</label>
 				  <input type="text" class="form-control" name="title" value="{{ movie.title }}" id="title" aria-describedby="title" >
 				</div>
 
 				<div class="form-group">
-					<label for="title">Movie Description</label>
-					<textarea class="form-control" name="description" id="description" aria-describedby="description" >{{ movie.description }}</textarea>
+					<label for="title">Relase Date : {{ movie.releaseYear }}</label>
+					<input
+						type="date"
+						class="form-control"
+						name="release_year"
+						value="{{ movie.releaseYear }}"
+					/>
 				</div>
-				
+
+				<div class="form-group">
+					<label for="image">Change  Image</label>
+					<input type="file" class="form-control" name="image_path"  />
+					<img src="{{ asset('uploads/images_directory/' ~ movie.imagePath ) }}" alt="image" width="100" height="100">
+				</div>
+
+				<div class="form-group">
+					<label for="title">Movie Description</label>
+					<textarea class="form-control" name="description"  >{{ movie.description }}</textarea>
+				</div>
 				<button type="submit" class="btn btn-primary">Update</button>
 			  </form>
 			<hr>
 			<br />
-			<h1> Actor List</h1>
-			<ul class="list-group">
-				{% for actor in movie.actors %}
-					<li class="list-group-item"><strong>Actor Name:</strong> {{actor.name}}</li>
-				{% endfor %}
-			</ul>
+		
 		</div>
 
 	</div>
