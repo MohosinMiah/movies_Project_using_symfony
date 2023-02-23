@@ -108,7 +108,6 @@ class MoviesController extends AbstractController
 			);
 			$movie->setImagePath( $image_path_name );
 		}
-
 		$movie->setDescription($request->get('description'));
 		$entityManager->persist($movie);
 		$entityManager->flush();

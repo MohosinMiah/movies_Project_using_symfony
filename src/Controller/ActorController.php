@@ -24,15 +24,15 @@ class ActorController extends AbstractController
 	
 
 	#[Route('/actor_show/{id}', name: 'actor_show')]
-	public function show(Actor $movie): Response
+	public function show(Actor $actor): Response
 	{
 		// forEach( $movie->getActors() as $actor) {
 		// 	echo $actor->getName();
 		// 	echo "<br/>";
 		// }
 		// dd($movie->getActors());    
-		return $this->render('movies/show.html.twig', [
-			'movie' => $movie,
+		return $this->render('actors/show.html.twig', [
+			'actor' => $actor,
 		]);
 	}
 
